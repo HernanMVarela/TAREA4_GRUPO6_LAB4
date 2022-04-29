@@ -19,9 +19,6 @@ public class Ventana_Principal extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -35,7 +32,7 @@ public class Ventana_Principal extends JFrame {
 		});
 	}
 
-	
+	// VENTANA PRINCIPAL - CONSTRUCTOR CON PROPIEDADES DE LA VENTANA
 	public Ventana_Principal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -69,7 +66,6 @@ public class Ventana_Principal extends JFrame {
 		
 	}
 }
-
 
 // CLASES EVENTOS DE BOTONES
 class e_boton1 implements ActionListener {
