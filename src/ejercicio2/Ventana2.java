@@ -22,7 +22,12 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.border.LineBorder;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Ventana2 extends JFrame {
 
@@ -32,6 +37,8 @@ public class Ventana2 extends JFrame {
 	private JTextField txtNota3;
 	private JTextField txfPromedio;
 	private JTextField txfCondicion;
+	//private JButton btnSalir;
+	
 
 	/**
 	 * Launch the application.
@@ -48,13 +55,17 @@ public class Ventana2 extends JFrame {
 			}
 		});
 	}
+	
+	public void cerrar() {
+		dispose();		
+	}
 
 	/**
 	 * Create the frame.
 	 */
 	public Ventana2() {
 		setTitle("Notas del estudiante");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 600, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -99,19 +110,51 @@ public class Ventana2 extends JFrame {
 		panel_superior.add(lblTPS);
 		
 		txtNota1 = new JTextField();
+		txtNota1.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				char A = arg0.getKeyChar();
+				if (((A < '0') || A > '9') && (A != KeyEvent.VK_BACK_SPACE) && (A != KeyEvent.VK_PERIOD)) {
+					arg0.consume();
+				}
+			}			
+		});		
+		txtNota1.setText("0");
 		txtNota1.setBounds(122, 30, 165, 27);
 		panel_superior.add(txtNota1);
 		txtNota1.setColumns(10);
 		
 		txtNota2 = new JTextField();
+		txtNota2.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char A = e.getKeyChar();
+				if (((A < '0') || A > '9') && (A != KeyEvent.VK_BACK_SPACE) && (A != KeyEvent.VK_PERIOD)) {
+					e.consume();
+				}
+			}
+		});
+		txtNota2.setText("0");
 		txtNota2.setColumns(10);
 		txtNota2.setBounds(122, 77, 165, 27);
 		panel_superior.add(txtNota2);
 		
 		txtNota3 = new JTextField();
+		txtNota3.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char A = e.getKeyChar();
+				if (((A < '0') || A > '9') && (A != KeyEvent.VK_BACK_SPACE) && (A != KeyEvent.VK_PERIOD)) {
+					e.consume();
+				}
+			}
+		});
+		txtNota3.setText("0");
 		txtNota3.setColumns(10);
 		txtNota3.setBounds(122, 122, 165, 27);
 		panel_superior.add(txtNota3);
+		
+		
 		
 		JComboBox cbxTPS = new JComboBox();
 		cbxTPS.setModel(new DefaultComboBoxModel(new String[] {"Aprobado", "Desaprobado"}));
@@ -137,11 +180,13 @@ public class Ventana2 extends JFrame {
 		panel_inferior.add(lblCondicion);
 		
 		txfPromedio = new JTextField();
+		txfPromedio.setEditable(false);
 		txfPromedio.setColumns(10);
 		txfPromedio.setBounds(147, 34, 165, 27);
 		panel_inferior.add(txfPromedio);
 		
 		txfCondicion = new JTextField();
+		txfCondicion.setEditable(false);
 		txfCondicion.setColumns(10);
 		txfCondicion.setBounds(147, 77, 165, 27);
 		panel_inferior.add(txfCondicion);
@@ -151,11 +196,26 @@ public class Ventana2 extends JFrame {
 		contentPane.add(btnCalcular);
 		
 		JButton btnNuevo = new JButton("Nuevo");
+		btnNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtNota1.setText("0");
+				txtNota2.setText("0");
+				txtNota3.setText("0");
+				txfPromedio.setText("");
+				txfCondicion.setText("");
+			}
+		});
 		btnNuevo.setBounds(408, 156, 142, 42);
 		contentPane.add(btnNuevo);
 		
 		JButton btnSalir = new JButton("Salir");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				cerrar();
+			}
+		});
 		btnSalir.setBounds(408, 211, 142, 42);
 		contentPane.add(btnSalir);
 	}
 }
+
