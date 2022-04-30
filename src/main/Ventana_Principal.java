@@ -1,16 +1,18 @@
-package ejercicio1;
-
+package main;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import ejercicio2.Ventana2;
+import ejercicio3.Ventana3;
+
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
@@ -34,6 +36,7 @@ public class Ventana_Principal extends JFrame {
 
 	// VENTANA PRINCIPAL - CONSTRUCTOR CON PROPIEDADES DE LA VENTANA
 	public Ventana_Principal() {
+		setTitle("Menu Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -79,7 +82,8 @@ class e_boton1 implements ActionListener {
 class e_boton2 implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		/// ABRIR VENTANA EJERCICIO 2 ACA		
+		Ventana2 Vent2 = new Ventana2();
+		Vent2.setVisible(true);	
 		System.out.println("FUNCIONA BOTON 2");
 	}
 }
@@ -87,7 +91,8 @@ class e_boton3 implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		/// ABRIR VENTANA EJERCICIO 3 ACA		
+		Ventana3 Vent3 = new Ventana3();
+		Vent3.setVisible(true);
 		System.out.println("FUNCIONA BOTON 3");
 	}
 }

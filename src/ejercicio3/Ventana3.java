@@ -1,4 +1,4 @@
-package ejercicio4;
+package ejercicio3;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -22,7 +22,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ejercicio3 extends JFrame {
+public class Ventana3 extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -35,7 +35,7 @@ public class ejercicio3 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ejercicio3 frame = new ejercicio3();
+					Ventana3 frame = new Ventana3();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +47,7 @@ public class ejercicio3 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ejercicio3() {
+	public Ventana3() {
 		setTitle("Seleccion m\u00FAltiple");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
