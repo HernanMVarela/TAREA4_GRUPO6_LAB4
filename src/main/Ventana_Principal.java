@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import ejercicio1.Ventana1;
 import ejercicio2.Ventana2;
 import ejercicio3.Ventana3;
 
@@ -74,8 +75,17 @@ public class Ventana_Principal extends JFrame {
 class e_boton1 implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		/// ABRIR VENTANA EJERCICIO 1 ACA	
-		System.out.println("FUNCIONA BOTON 1");
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Ventana1 frame = new Ventana1();
+					frame.setVisible(true);
+					System.out.println("FUNCIONA BOTON 1");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 }
 

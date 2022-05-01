@@ -1,6 +1,5 @@
 package ejercicio1;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 
@@ -16,12 +15,29 @@ import java.awt.event.ActionEvent;
 
 public class Ventana1 extends JFrame {
 
+	private static final long serialVersionUID = 1L;
+	
 	private JPanel contentPane;
 	private JTextField txtNombre;
 	private JTextField txtApellido;
 	private JTextField txtTelefono;
 	private JTextField txtFecNac;
 	private boolean bandera = true;
+	private JLabel lblNombre = new JLabel("Nombre");
+	private JLabel lblApellido = new JLabel("Apellido");
+	private JLabel lblTelefono = new JLabel("Telefono");
+	private JLabel lblFecNac = new JLabel("Fecha Nac.");
+	private JLabel lblDatosIngresados = new JLabel("");
+	private JLabel lblNombrelbl = new JLabel("Nombre");
+	private JLabel lblApellidolbl = new JLabel("Apellido");
+	private JLabel lblTelefonolbl = new JLabel("Teléfono");
+	private JLabel lblFecNaclbl = new JLabel("Fec. Nac.");
+	private JLabel lblNombretxt = new JLabel("");
+	private JLabel lblApellidotxt = new JLabel("");
+	private JLabel lblTelefonotxt = new JLabel("");
+	private JLabel lblFecNactxt = new JLabel("");
+	
+	
 
 	/**
 	 * Launch the application.
@@ -30,8 +46,8 @@ public class Ventana1 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Ventana1 frame = new Ventana1();
-					frame.setVisible(true);
+					//Ventana1 frame = new Ventana1();
+					//frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -45,31 +61,31 @@ public class Ventana1 extends JFrame {
 	public Ventana1() {
 		setTitle("Contactos");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 420, 350);
+		setBounds(100, 100, 420, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNombre = new JLabel("Nombre");
 		lblNombre.setFont(new Font("Arial", Font.BOLD, 14));
 		lblNombre.setBounds(10, 23, 72, 30);
 		contentPane.add(lblNombre);
 		
-		JLabel lblApellido = new JLabel("Apellido");
 		lblApellido.setFont(new Font("Arial", Font.BOLD, 14));
 		lblApellido.setBounds(10, 64, 72, 30);
 		contentPane.add(lblApellido);
-		
-		JLabel lblTelefono = new JLabel("Telefono");
+				
 		lblTelefono.setFont(new Font("Arial", Font.BOLD, 14));
 		lblTelefono.setBounds(10, 105, 72, 30);
 		contentPane.add(lblTelefono);
-		
-		JLabel lblFecNac = new JLabel("Fecha Nac.");
+				
 		lblFecNac.setFont(new Font("Arial", Font.BOLD, 14));
 		lblFecNac.setBounds(10, 146, 90, 30);
 		contentPane.add(lblFecNac);
+				
+		lblDatosIngresados.setFont(new Font("Arial", Font.BOLD, 14));
+		lblDatosIngresados.setBounds(10, 255, 355, 30);
+		contentPane.add(lblDatosIngresados);
 		
 		txtNombre = new JTextField();
 		txtNombre.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -95,49 +111,115 @@ public class Ventana1 extends JFrame {
 		txtFecNac.setBounds(137, 152, 228, 20);
 		contentPane.add(txtFecNac);
 		
+		lblNombrelbl.setVisible(false);
+		lblNombrelbl.setFont(new Font("Arial", Font.BOLD, 14));
+		lblNombrelbl.setBounds(10, 296, 125, 30);
+		contentPane.add(lblNombrelbl);
+		
+		lblApellidolbl.setVisible(false);
+		lblApellidolbl.setFont(new Font("Arial", Font.BOLD, 14));
+		lblApellidolbl.setBounds(10, 336, 125, 30);
+		contentPane.add(lblApellidolbl);
+		
+		lblTelefonolbl.setVisible(false);
+		lblTelefonolbl.setFont(new Font("Arial", Font.BOLD, 14));
+		lblTelefonolbl.setBounds(10, 377, 125, 30);
+		contentPane.add(lblTelefonolbl);
+		
+		lblFecNaclbl.setVisible(false);
+		lblFecNaclbl.setFont(new Font("Arial", Font.BOLD, 14));
+		lblFecNaclbl.setBounds(10, 418, 125, 30);
+		contentPane.add(lblFecNaclbl);
+		
+		lblNombretxt.setVisible(false);
+		lblNombretxt.setFont(new Font("Arial", Font.PLAIN, 14));
+		lblNombretxt.setBounds(137, 296, 228, 30);		
+		contentPane.add(lblNombretxt);
+		
+		lblApellidotxt.setVisible(false);
+		lblApellidotxt.setFont(new Font("Arial", Font.PLAIN, 14));
+		lblApellidotxt.setBounds(137, 336, 228, 30);		
+		contentPane.add(lblApellidotxt);
+		
+		lblTelefonotxt.setVisible(false);
+		lblTelefonotxt.setFont(new Font("Arial", Font.PLAIN, 14));
+		lblTelefonotxt.setBounds(137, 377, 228, 30);		
+		contentPane.add(lblTelefonotxt);
+		
+		lblFecNactxt.setVisible(false);
+		lblFecNactxt.setFont(new Font("Arial", Font.PLAIN, 14));
+		lblFecNactxt.setBounds(137, 418, 228, 30);		
+		contentPane.add(lblFecNactxt);
+		
+		
 		JButton btnMostrar = new JButton("Mostrar");
 		btnMostrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				if(txtNombre.getText().isEmpty()) {
 					txtNombre.setBackground(Color.RED);
-					bandera = false;
+				} else {
+					txtNombre.setBackground(Color.WHITE);
 				}
 				
 				if(txtApellido.getText().isEmpty()) {
 					txtApellido.setBackground(Color.RED);
-					bandera = false;
+				} else {
+					txtApellido.setBackground(Color.WHITE);
 				}
 				
 				if(txtTelefono.getText().isEmpty()) {
 					txtTelefono.setBackground(Color.RED);
-					bandera = false;
+				} else {
+					txtTelefono.setBackground(Color.WHITE);
 				}
 				
 				if(txtFecNac.getText().isEmpty()) {
 					txtFecNac.setBackground(Color.RED);
+				} else {
+					txtFecNac.setBackground(Color.WHITE);
+				}
+				
+				if(txtNombre.getText().isEmpty()||txtApellido.getText().isEmpty()||txtTelefono.getText().isEmpty()||txtFecNac.getText().isEmpty()) {
 					bandera = false;
+				} else {
+					bandera = true;
 				}
 				
 				if(bandera) {
+					MostrarLabels(true);
+					lblDatosIngresados.setText("Los datos ingresados Fueron: ");
+					lblNombretxt.setText(txtNombre.getText());
+					lblApellidotxt.setText(txtApellido.getText());
+					lblTelefonotxt.setText(txtTelefono.getText());
+					lblFecNactxt.setText(txtFecNac.getText());
+					
+					txtNombre.setText("");
+					txtApellido.setText("");
+					txtTelefono.setText("");
+					txtFecNac.setText("");
 					
 				} else {
-					
+					MostrarLabels(false);
+					lblDatosIngresados.setText("Completar todos los campos");
 				}
-				
-				
 			}
 		});
+		
 		btnMostrar.setFont(new Font("Arial", Font.BOLD, 12));
 		btnMostrar.setBounds(276, 202, 89, 23);
 		contentPane.add(btnMostrar);
 		
-		JLabel lblMostrarDatosIngresados = new JLabel("");
-		lblMostrarDatosIngresados.setFont(new Font("Arial", Font.BOLD, 14));
-		lblMostrarDatosIngresados.setBounds(10, 255, 355, 30);
-		contentPane.add(lblMostrarDatosIngresados);
-		
-		
-		
+	}
+	
+	private void MostrarLabels (boolean bandera) {
+		lblNombrelbl.setVisible(bandera);
+		lblApellidolbl.setVisible(bandera);
+		lblTelefonolbl.setVisible(bandera);		
+		lblFecNaclbl.setVisible(bandera);
+		lblNombretxt.setVisible(bandera);
+		lblApellidotxt.setVisible(bandera);
+		lblTelefonotxt.setVisible(bandera);		
+		lblFecNactxt.setVisible(bandera);
 	}
 }
