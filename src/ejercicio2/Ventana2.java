@@ -37,6 +37,7 @@ public class Ventana2 extends JFrame {
 	private JTextField txtNota3;
 	private JTextField txfPromedio;
 	private JTextField txfCondicion;
+	private JComboBox cbxTPS;
 	//private JButton btnSalir;
 	
 
@@ -156,7 +157,7 @@ public class Ventana2 extends JFrame {
 		
 		
 		
-		JComboBox cbxTPS = new JComboBox();
+		cbxTPS = new JComboBox();
 		cbxTPS.setModel(new DefaultComboBoxModel(new String[] {"Aprobado", "Desaprobado"}));
 		cbxTPS.setToolTipText("");
 		cbxTPS.setMaximumRowCount(2);
@@ -231,6 +232,27 @@ public class Ventana2 extends JFrame {
 					float prom = (nota1 + nota2 + nota3)/3;
 					txfPromedio.setText(""+prom);
 				}
+				
+				//Condición
+				
+				if (cbxTPS.getSelectedItem().toString().equals("Desaprobado") || nota1<6 || nota2<6 || nota3<6) {
+					txfCondicion.setText("Libre");
+					return;
+				}
+				
+				if (cbxTPS.getSelectedItem().toString().equals("Aprobado")) {
+					if (nota1>=8 && nota2>=8 && nota3>=8) {
+						txfCondicion.setText("Promocionado");
+						return;
+					}
+					
+					else {
+						txfCondicion.setText("Regular");
+						return;
+					}
+				} 
+				
+				
 			}
 		});
 		
