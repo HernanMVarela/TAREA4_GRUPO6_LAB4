@@ -192,6 +192,48 @@ public class Ventana2 extends JFrame {
 		panel_inferior.add(txfCondicion);
 		
 		JButton btnCalcular = new JButton("Calcular");
+		btnCalcular.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				boolean pass = true;
+				float nota1=0, nota2=0, nota3=0;
+				txtNota1.setBackground(Color.WHITE);
+				txtNota2.setBackground(Color.WHITE);
+				txtNota3.setBackground(Color.WHITE);
+				
+				if(txtNota1.getText().equals("")) {txtNota1.setBackground(Color.RED); pass=false;}
+				if(txtNota2.getText().equals("")) {txtNota2.setBackground(Color.RED); pass=false;}
+				if(txtNota3.getText().equals("")) {txtNota3.setBackground(Color.RED); pass=false;}
+				
+				if(pass) {
+					nota1 = Float.parseFloat(txtNota1.getText());
+					nota2 = Float.parseFloat(txtNota2.getText());
+					nota3 = Float.parseFloat(txtNota3.getText());
+					
+					if(nota1<0 || nota1>10) {
+						txtNota1.setText("");
+						txtNota1.setBackground(Color.RED);
+						pass=false;
+					}
+					
+					if(nota2<0 || nota2>10) {
+						txtNota2.setText("");
+						txtNota2.setBackground(Color.RED);
+						pass=false;
+					}
+					
+					if(nota3<0 || nota3>10) {
+						txtNota3.setText("");
+						txtNota3.setBackground(Color.RED);
+						pass=false;
+					}
+				}
+				if(pass) {
+					float prom = (nota1 + nota2 + nota3)/3;
+					txfPromedio.setText(""+prom);
+				}
+			}
+		});
+		
 		btnCalcular.setBounds(408, 101, 142, 42);
 		contentPane.add(btnCalcular);
 		
