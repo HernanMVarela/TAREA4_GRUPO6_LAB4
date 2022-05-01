@@ -1,8 +1,6 @@
 package ejercicio1;
 
 import java.awt.Color;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -37,27 +35,6 @@ public class Ventana1 extends JFrame {
 	private JLabel lblTelefonotxt = new JLabel("");
 	private JLabel lblFecNactxt = new JLabel("");
 	
-	
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					//Ventana1 frame = new Ventana1();
-					//frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public Ventana1() {
 		setTitle("Contactos");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -150,7 +127,6 @@ public class Ventana1 extends JFrame {
 		lblFecNactxt.setFont(new Font("Arial", Font.PLAIN, 14));
 		lblFecNactxt.setBounds(137, 418, 228, 30);		
 		contentPane.add(lblFecNactxt);
-		
 		
 		JButton btnMostrar = new JButton("Mostrar");
 		btnMostrar.addActionListener(new ActionListener() {
