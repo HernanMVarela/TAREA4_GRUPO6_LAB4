@@ -37,13 +37,8 @@ public class Ventana2 extends JFrame {
 	private JTextField txtNota3;
 	private JTextField txfPromedio;
 	private JTextField txfCondicion;
-	private JComboBox cbxTPS;
-	//private JButton btnSalir;
-	
+	private JComboBox cbxTPS;	
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -61,9 +56,6 @@ public class Ventana2 extends JFrame {
 		dispose();		
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public Ventana2() {
 		setTitle("Notas del estudiante");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -154,9 +146,7 @@ public class Ventana2 extends JFrame {
 		txtNota3.setColumns(10);
 		txtNota3.setBounds(122, 122, 165, 27);
 		panel_superior.add(txtNota3);
-		
-		
-		
+			
 		cbxTPS = new JComboBox();
 		cbxTPS.setModel(new DefaultComboBoxModel(new String[] {"Aprobado", "Desaprobado"}));
 		cbxTPS.setToolTipText("");
@@ -200,59 +190,62 @@ public class Ventana2 extends JFrame {
 				txtNota1.setBackground(Color.WHITE);
 				txtNota2.setBackground(Color.WHITE);
 				txtNota3.setBackground(Color.WHITE);
-				
-				if(txtNota1.getText().equals("")) {txtNota1.setBackground(Color.RED); pass=false;}
-				if(txtNota2.getText().equals("")) {txtNota2.setBackground(Color.RED); pass=false;}
-				if(txtNota3.getText().equals("")) {txtNota3.setBackground(Color.RED); pass=false;}
-				
-				if(pass) {
-					nota1 = Float.parseFloat(txtNota1.getText());
-					nota2 = Float.parseFloat(txtNota2.getText());
-					nota3 = Float.parseFloat(txtNota3.getText());
+				try {
+					// Validacion texfield vacio
+					if(txtNota1.getText().equals("")) {txtNota1.setBackground(Color.RED); pass=false;}
+					if(txtNota2.getText().equals("")) {txtNota2.setBackground(Color.RED); pass=false;}
+					if(txtNota3.getText().equals("")) {txtNota3.setBackground(Color.RED); pass=false;}
 					
-					if(nota1<0 || nota1>10) {
-						txtNota1.setText("");
-						txtNota1.setBackground(Color.RED);
-						pass=false;
+					// Validacion números válidos
+					if(pass) {
+						nota1 = Float.parseFloat(txtNota1.getText());
+						nota2 = Float.parseFloat(txtNota2.getText());
+						nota3 = Float.parseFloat(txtNota3.getText());
+						
+						if(nota1<0 || nota1>10) {
+							txtNota1.setText("");
+							txtNota1.setBackground(Color.RED);
+							pass=false;
+						}
+						
+						if(nota2<0 || nota2>10) {
+							txtNota2.setText("");
+							txtNota2.setBackground(Color.RED);
+							pass=false;
+						}
+						
+						if(nota3<0 || nota3>10) {
+							txtNota3.setText("");
+							txtNota3.setBackground(Color.RED);
+							pass=false;
+						}
 					}
+					// Promedio
+					if(pass) {
+						float prom = (nota1 + nota2 + nota3)/3;
+						txfPromedio.setText(Float.toString(prom));
+					}else{return;}
 					
-					if(nota2<0 || nota2>10) {
-						txtNota2.setText("");
-						txtNota2.setBackground(Color.RED);
-						pass=false;
-					}
-					
-					if(nota3<0 || nota3>10) {
-						txtNota3.setText("");
-						txtNota3.setBackground(Color.RED);
-						pass=false;
-					}
-				}
-				if(pass) {
-					float prom = (nota1 + nota2 + nota3)/3;
-					txfPromedio.setText(""+prom);
-				}
-				
-				//Condición
-				
-				if (cbxTPS.getSelectedItem().toString().equals("Desaprobado") || nota1<6 || nota2<6 || nota3<6) {
-					txfCondicion.setText("Libre");
-					return;
-				}
-				
-				if (cbxTPS.getSelectedItem().toString().equals("Aprobado")) {
-					if (nota1>=8 && nota2>=8 && nota3>=8) {
-						txfCondicion.setText("Promocionado");
+					//Condición
+					if (cbxTPS.getSelectedItem().toString().equals("Desaprobado") || nota1<6 || nota2<6 || nota3<6) {
+						txfCondicion.setText("Libre");
 						return;
 					}
 					
-					else {
-						txfCondicion.setText("Regular");
-						return;
-					}
-				} 
-				
-				
+					if (cbxTPS.getSelectedItem().toString().equals("Aprobado")) {
+						if (nota1>=8 && nota2>=8 && nota3>=8) {
+							txfCondicion.setText("Promocionado");
+							return;
+						}
+						
+						else {
+							txfCondicion.setText("Regular");
+							return;
+						}
+					} 
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		
