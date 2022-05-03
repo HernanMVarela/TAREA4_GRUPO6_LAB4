@@ -1,13 +1,10 @@
 package ejercicio3;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.GridLayout;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -174,7 +171,7 @@ public class Ventana3 extends JFrame {
 		}
 	}
 	private void validar(String msjRadios, String msjChecks, String horas) {
-			JOptionPane.showMessageDialog(this,  msjRadios + " - " + msjChecks  +  horas, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(this,  msjRadios + " - " + msjChecks  +  horas + " Hs", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 	}
 	}
 	

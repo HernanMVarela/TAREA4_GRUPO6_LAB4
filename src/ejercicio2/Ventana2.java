@@ -1,21 +1,12 @@
 package ejercicio2;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.Box;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.Component;
-import javax.swing.BoxLayout;
-import javax.swing.JSplitPane;
-import javax.swing.JDesktopPane;
-import java.awt.GridLayout;
-import javax.swing.JSeparator;
-import javax.swing.SpringLayout;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -32,6 +23,8 @@ import javax.swing.SwingConstants;
 
 public class Ventana2 extends JFrame {
 
+	private static final long serialVersionUID = 1L;
+	
 	private JPanel contentPane;
 	private JTextField txtNota1;
 	private JTextField txtNota2;
