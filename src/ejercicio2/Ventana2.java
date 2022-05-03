@@ -28,6 +28,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.SwingConstants;
 
 public class Ventana2 extends JFrame {
 
@@ -109,6 +110,7 @@ public class Ventana2 extends JFrame {
 		panel_superior.add(lblTPS);
 		
 		txtNota1 = new JTextField();
+		txtNota1.setHorizontalAlignment(SwingConstants.LEFT);
 		txtNota1.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent arg0) {
@@ -117,8 +119,7 @@ public class Ventana2 extends JFrame {
 					arg0.consume();
 				}
 			}			
-		});		
-		txtNota1.setText("0");
+		});
 		txtNota1.setBounds(122, 30, 165, 27);
 		panel_superior.add(txtNota1);
 		txtNota1.setColumns(10);
@@ -133,7 +134,6 @@ public class Ventana2 extends JFrame {
 				}
 			}
 		});
-		txtNota2.setText("0");
 		txtNota2.setColumns(10);
 		txtNota2.setBounds(122, 77, 165, 27);
 		panel_superior.add(txtNota2);
@@ -148,7 +148,6 @@ public class Ventana2 extends JFrame {
 				}
 			}
 		});
-		txtNota3.setText("0");
 		txtNota3.setColumns(10);
 		txtNota3.setBounds(122, 122, 165, 27);
 		panel_superior.add(txtNota3);
@@ -205,7 +204,7 @@ public class Ventana2 extends JFrame {
 						nota2 = Float.parseFloat(txtNota2.getText());
 						nota3 = Float.parseFloat(txtNota3.getText());
 						
-						if(nota1<0 || nota1>10) {
+						if(nota1<1 || nota1>10) {
 							txtNota1.setText("");
 							txtNota1.setBackground(Color.RED);
 							pass=false;
@@ -214,7 +213,7 @@ public class Ventana2 extends JFrame {
 							txtNota1.setBackground(Color.WHITE);
 						}
 						
-						if(nota2<0 || nota2>10) {
+						if(nota2<1 || nota2>10) {
 							txtNota2.setText("");
 							txtNota2.setBackground(Color.RED);
 							pass=false;
@@ -224,7 +223,7 @@ public class Ventana2 extends JFrame {
 						}
 						
 						
-						if(nota3<0 || nota3>10) {
+						if(nota3<1 || nota3>10) {
 							txtNota3.setText("");
 							txtNota3.setBackground(Color.RED);
 							pass=false;
@@ -232,14 +231,17 @@ public class Ventana2 extends JFrame {
 						else {
 							txtNota3.setBackground(Color.WHITE);
 						}
-						
 					}
 					// Promedio
 					if(pass) {
 						float prom = (nota1 + nota2 + nota3)/3;
 						txfPromedio.setText(Float.toString(prom));
 					}
-					else{return;}
+					else{
+						txfPromedio.setText("");
+						txfCondicion.setText("");
+						return;
+					}
 					
 					// Condición
 					if (cbxTPS.getSelectedItem().toString().equals("Desaprobado") || nota1<6 || nota2<6 || nota3<6) {
@@ -276,6 +278,9 @@ public class Ventana2 extends JFrame {
 				vaciar();
 				txfPromedio.setText("");
 				txfCondicion.setText("");
+				txtNota1.setBackground(Color.WHITE);
+				txtNota2.setBackground(Color.WHITE);
+				txtNota3.setBackground(Color.WHITE);
 			}
 		});
 		btnNuevo.setBounds(408, 156, 142, 42);
