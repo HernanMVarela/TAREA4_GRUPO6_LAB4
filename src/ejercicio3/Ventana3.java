@@ -20,6 +20,8 @@ import javax.swing.JTextField;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 
 public class Ventana3 extends JFrame {
@@ -121,11 +123,21 @@ public class Ventana3 extends JFrame {
 		panel_2.add(checkDisGra);
 		
 		JLabel lblNewLabel_2 = new JLabel("Cantidad de horas en el computador:");
+		
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel_2.setBounds(48, 209, 239, 14);
 		panel.add(lblNewLabel_2);
 		
 		textField = new JTextField();
+		textField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				char A = arg0.getKeyChar();
+				if (((A < '0')) && (A != KeyEvent.VK_BACK_SPACE) && (A != KeyEvent.VK_PERIOD)) {
+					arg0.consume();
+				}
+			}			
+		});
 		textField.setBounds(300, 207, 99, 20);
 		panel.add(textField);
 		textField.setColumns(10);
@@ -139,9 +151,9 @@ public class Ventana3 extends JFrame {
 					if ( radioMac.isSelected() ) msjRadios ="Mac"; 
 					if ( radioLinux.isSelected() ) msjRadios ="Linux"; 
 					
-					if ( checkProg.isSelected() ) msjChecks +=  "Programación - "; 
-					if ( checkAdmin.isSelected() ) msjChecks +="Administración - "; 
-					if ( checkDisGra.isSelected() ) msjChecks +="Diseño gráfico - "; 
+					if ( checkProg.isSelected() ) msjChecks +=  "Programaciï¿½n - "; 
+					if ( checkAdmin.isSelected() ) msjChecks +="Administraciï¿½n - "; 
+					if ( checkDisGra.isSelected() ) msjChecks +="Diseï¿½o grï¿½fico - "; 
 					
 					if(esNumerico( horas)== false) horas ="";
 					
@@ -174,7 +186,7 @@ public class Ventana3 extends JFrame {
 		}
 	}
 	private void validar(String msjRadios, String msjChecks, String horas) {
-			JOptionPane.showMessageDialog(this,  msjRadios + " - " + msjChecks  +  horas, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(this,  msjRadios + " - " + msjChecks  +  horas + " Hs", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 	}
 	}
 	

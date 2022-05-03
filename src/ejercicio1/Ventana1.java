@@ -9,6 +9,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 
 public class Ventana1 extends JFrame {
@@ -65,24 +67,59 @@ public class Ventana1 extends JFrame {
 		contentPane.add(lblDatosIngresados);
 		
 		txtNombre = new JTextField();
+		txtNombre.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char key = e.getKeyChar();
+		        if (!(Character.isLetter(key)) ) {
+		            e.consume();
+				}
+			}			
+		});
 		txtNombre.setFont(new Font("Arial", Font.PLAIN, 12));
 		txtNombre.setBounds(137, 29, 228, 20);
 		contentPane.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		txtApellido = new JTextField();
+		txtApellido.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char key = e.getKeyChar();
+		        if (!(Character.isLetter(key)) ) {
+		            e.consume();
+				}
+			}			
+		});
 		txtApellido.setFont(new Font("Arial", Font.PLAIN, 12));
 		txtApellido.setColumns(10);
 		txtApellido.setBounds(137, 70, 228, 20);
 		contentPane.add(txtApellido);
 		
 		txtTelefono = new JTextField();
+		txtTelefono.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				char A = arg0.getKeyChar();
+				if (((A < '0') || A > '9') && (A != KeyEvent.VK_BACK_SPACE) && (A != KeyEvent.VK_DELETE)) {
+					arg0.consume();
+				}
+			}			
+		});		
 		txtTelefono.setFont(new Font("Arial", Font.PLAIN, 12));
 		txtTelefono.setColumns(10);
 		txtTelefono.setBounds(137, 111, 228, 20);
 		contentPane.add(txtTelefono);
 		
 		txtFecNac = new JTextField();
+		txtFecNac.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				char A = arg0.getKeyChar();
+				if (((A < '0') || A > '9') && (A != KeyEvent.VK_BACK_SPACE) && (A != KeyEvent.VK_MINUS) && (A != KeyEvent.VK_SLASH)) {
+					arg0.consume();}
+			}			
+		});	
 		txtFecNac.setFont(new Font("Arial", Font.PLAIN, 12));
 		txtFecNac.setColumns(10);
 		txtFecNac.setBounds(137, 152, 228, 20);
