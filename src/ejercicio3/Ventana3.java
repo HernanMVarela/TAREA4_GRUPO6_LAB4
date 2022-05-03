@@ -130,6 +130,51 @@ public class Ventana3 extends JFrame {
 		panel.add(textField);
 		textField.setColumns(10);
 		
+		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String msjRadios =""; String msjChecks =""; String horas = textField.getText();
+					if ( radioWindows.isSelected() ) msjRadios ="Windows"; //Recordar poner grupo de JRadioButons para seleccionar uno solo 
+					if ( radioMac.isSelected() ) msjRadios ="Mac"; 
+					if ( radioLinux.isSelected() ) msjRadios ="Linux"; 
+					
+					if ( checkProg.isSelected() ) msjChecks +=  "Programación - "; 
+					if ( checkAdmin.isSelected() ) msjChecks +="Administración - "; 
+					if ( checkDisGra.isSelected() ) msjChecks +="Diseño gráfico - "; 
+					
+					if(esNumerico( horas)== false) horas ="";
+					
+					if(msjRadios == "" || msjChecks =="" || horas =="")	validar(false);
+					else validar(msjRadios, msjChecks, horas);
+					
+				}catch(Exception e1) {
+				}
+			}
+
+			private boolean esNumerico(String horas) {
+				try {
+					Float.parseFloat(horas);
+					return true;
+				}catch (NumberFormatException e) {
+					return false;
+				}
+			}
+			
+		});
+		btnAceptar.setBounds(321, 243, 89, 23);
+		panel.add(btnAceptar);
+		
+		setLocationRelativeTo(null);  
+	}
+	
+	private void validar(boolean bool) {
+		if(!bool) {
+			JOptionPane.showMessageDialog(this, "Ingrese los datos requeridos.", "Advertencia", JOptionPane.ERROR_MESSAGE);
 		}
+	}
+	private void validar(String msjRadios, String msjChecks, String horas) {
+			JOptionPane.showMessageDialog(this,  msjRadios + " - " + msjChecks  +  horas, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+	}
 	}
 	
