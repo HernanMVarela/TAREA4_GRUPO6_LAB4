@@ -55,6 +55,12 @@ public class Ventana2 extends JFrame {
 	public void cerrar() {
 		dispose();		
 	}
+	
+	public void vaciar() {
+		txtNota1.setText("");
+		txtNota2.setText("");
+		txtNota3.setText("");
+	}
 
 	public Ventana2() {
 		setTitle("Notas del estudiante");
@@ -187,14 +193,11 @@ public class Ventana2 extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				boolean pass = true;
 				float nota1=0, nota2=0, nota3=0;
-				txtNota1.setBackground(Color.WHITE);
-				txtNota2.setBackground(Color.WHITE);
-				txtNota3.setBackground(Color.WHITE);
 				try {
 					// Validacion texfield vacio
-					if(txtNota1.getText().equals("")) {txtNota1.setBackground(Color.RED); pass=false;}
-					if(txtNota2.getText().equals("")) {txtNota2.setBackground(Color.RED); pass=false;}
-					if(txtNota3.getText().equals("")) {txtNota3.setBackground(Color.RED); pass=false;}
+					if(txtNota1.getText().isEmpty()) {txtNota1.setBackground(Color.RED); pass=false;}
+					if(txtNota2.getText().isEmpty()) {txtNota2.setBackground(Color.RED); pass=false;}
+					if(txtNota3.getText().isEmpty()) {txtNota3.setBackground(Color.RED); pass=false;}
 					
 					// Validacion números válidos
 					if(pass) {
@@ -207,39 +210,54 @@ public class Ventana2 extends JFrame {
 							txtNota1.setBackground(Color.RED);
 							pass=false;
 						}
+						else {
+							txtNota1.setBackground(Color.WHITE);
+						}
 						
 						if(nota2<0 || nota2>10) {
 							txtNota2.setText("");
 							txtNota2.setBackground(Color.RED);
 							pass=false;
 						}
+						else {
+							txtNota2.setBackground(Color.WHITE);
+						}
+						
 						
 						if(nota3<0 || nota3>10) {
 							txtNota3.setText("");
 							txtNota3.setBackground(Color.RED);
 							pass=false;
 						}
+						else {
+							txtNota3.setBackground(Color.WHITE);
+						}
+						
 					}
 					// Promedio
 					if(pass) {
 						float prom = (nota1 + nota2 + nota3)/3;
 						txfPromedio.setText(Float.toString(prom));
-					}else{return;}
+					}
+					else{return;}
 					
-					//Condición
+					// Condición
 					if (cbxTPS.getSelectedItem().toString().equals("Desaprobado") || nota1<6 || nota2<6 || nota3<6) {
 						txfCondicion.setText("Libre");
+						vaciar();
 						return;
 					}
 					
 					if (cbxTPS.getSelectedItem().toString().equals("Aprobado")) {
 						if (nota1>=8 && nota2>=8 && nota3>=8) {
 							txfCondicion.setText("Promocionado");
+							vaciar();
 							return;
 						}
 						
 						else {
 							txfCondicion.setText("Regular");
+							vaciar();
 							return;
 						}
 					} 
@@ -255,9 +273,7 @@ public class Ventana2 extends JFrame {
 		JButton btnNuevo = new JButton("Nuevo");
 		btnNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtNota1.setText("0");
-				txtNota2.setText("0");
-				txtNota3.setText("0");
+				vaciar();
 				txfPromedio.setText("");
 				txfCondicion.setText("");
 			}

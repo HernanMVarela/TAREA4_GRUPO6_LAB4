@@ -80,8 +80,7 @@ class e_boton1 implements ActionListener {
 				try {
 					Ventana1 frame = new Ventana1();
 					frame.setVisible(true);
-					System.out.println("FUNCIONA BOTON 1");
-				} catch (Exception e) {
+					} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -94,8 +93,7 @@ class e_boton2 implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		Ventana2 Vent2 = new Ventana2();
 		Vent2.setVisible(true);	
-		System.out.println("FUNCIONA BOTON 2");
-	}
+		}
 }
 class e_boton3 implements ActionListener {
 
@@ -103,6 +101,5 @@ class e_boton3 implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		Ventana3 Vent3 = new Ventana3();
 		Vent3.setVisible(true);
-		System.out.println("FUNCIONA BOTON 3");
-	}
+		}
 }
