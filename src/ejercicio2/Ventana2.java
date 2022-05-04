@@ -183,47 +183,44 @@ public class Ventana2 extends JFrame {
 		JButton btnCalcular = new JButton("Calcular");
 		btnCalcular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				boolean pass = true;
+				boolean pass = true, pass2 = true;
 				float nota1=0, nota2=0, nota3=0;
 				try {
 					// Validacion texfield vacio
 					if(txtNota1.getText().isEmpty()) {txtNota1.setBackground(Color.RED); pass=false;}
+					else {nota1 = Float.parseFloat(txtNota1.getText());}
 					if(txtNota2.getText().isEmpty()) {txtNota2.setBackground(Color.RED); pass=false;}
+					else {nota2 = Float.parseFloat(txtNota2.getText());}
 					if(txtNota3.getText().isEmpty()) {txtNota3.setBackground(Color.RED); pass=false;}
+					else {nota3 = Float.parseFloat(txtNota3.getText());}
 					
 					// Validacion números válidos
-					if(pass) {
-						nota1 = Float.parseFloat(txtNota1.getText());
-						nota2 = Float.parseFloat(txtNota2.getText());
-						nota3 = Float.parseFloat(txtNota3.getText());
-						
-						if(nota1<1 || nota1>10) {
-							txtNota1.setText("");
-							txtNota1.setBackground(Color.RED);
-							pass=false;
-						}
-						else {
-							txtNota1.setBackground(Color.WHITE);
-						}
-						
-						if(nota2<1 || nota2>10) {
-							txtNota2.setText("");
-							txtNota2.setBackground(Color.RED);
-							pass=false;
-						}
-						else {
-							txtNota2.setBackground(Color.WHITE);
-						}
-						
-						
-						if(nota3<1 || nota3>10) {
-							txtNota3.setText("");
-							txtNota3.setBackground(Color.RED);
-							pass=false;
-						}
-						else {
-							txtNota3.setBackground(Color.WHITE);
-						}
+					if(nota1<1 || nota1>10) {
+						txtNota1.setText("");
+						txtNota1.setBackground(Color.RED);
+						pass=false;
+					}
+					else {
+						txtNota1.setBackground(Color.WHITE);
+					}
+					
+					if(nota2<1 || nota2>10) {
+						txtNota2.setText("");
+						txtNota2.setBackground(Color.RED);
+						pass=false;
+					}
+					else {
+						txtNota2.setBackground(Color.WHITE);
+					}
+					
+					
+					if(nota3<1 || nota3>10) {
+						txtNota3.setText("");
+						txtNota3.setBackground(Color.RED);
+						pass=false;
+					}
+					else {
+						txtNota3.setBackground(Color.WHITE);
 					}
 					// Promedio
 					if(pass) {
