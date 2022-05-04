@@ -33,19 +33,6 @@ public class Ventana2 extends JFrame {
 	private JTextField txfCondicion;
 	private JComboBox cbxTPS;	
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Ventana2 frame = new Ventana2();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
 	public void cerrar() {
 		dispose();		
 	}
@@ -212,8 +199,6 @@ public class Ventana2 extends JFrame {
 					else {
 						txtNota2.setBackground(Color.WHITE);
 					}
-					
-					
 					if(nota3<1 || nota3>10) {
 						txtNota3.setText("");
 						txtNota3.setBackground(Color.RED);
@@ -246,7 +231,6 @@ public class Ventana2 extends JFrame {
 							vaciar();
 							return;
 						}
-						
 						else {
 							txfCondicion.setText("Regular");
 							vaciar();

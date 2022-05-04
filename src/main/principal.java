@@ -7,5 +7,4 @@ public class principal {
 		Ventana_Principal VentP = new Ventana_Principal();
 		VentP.setVisible(true);
 	}
-
 }

@@ -27,25 +27,6 @@ public class Ventana3 extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Ventana3 frame = new Ventana3();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public Ventana3() {
 		setTitle("Seleccion m\u00FAltiple");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);

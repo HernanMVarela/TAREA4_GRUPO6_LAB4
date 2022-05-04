@@ -20,19 +20,6 @@ public class Ventana_Principal extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Ventana_Principal frame = new Ventana_Principal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	// VENTANA PRINCIPAL - CONSTRUCTOR CON PROPIEDADES DE LA VENTANA
 	public Ventana_Principal() {
 		setTitle("Menu Principal");
